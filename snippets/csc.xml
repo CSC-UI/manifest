@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <!-- Remotes -->
+  <remote name="csc" fetch="https://github.com/CSC-UI" revision="12.1" />
+  <remote name="acme" fetch="https://github.com/AcmeUI" revision="spring" />
+
+  <project path="bionic" name="android_bionic" groups="pdk" remote="acme" />
+
+  <!-- build -->
+  <project path="build/make" name="android_build" groups="pdk" remote="acme" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <project path="build/soong" name="android_build_soong" groups="pdk,tradefed" remote="acme" >
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+
+  <!-- device -->
+  <project path="device/acme/sepolicy" name="android_device_acme_sepolicy" remote="acme" />
+  <project path="device/qcom/sepolicy" name="android_device_qcom_sepolicy" remote="acme" />
+  <project path="device/qcom/sepolicy_vndr" name="android_device_qcom_sepolicy_vndr" remote="acme" />
+  <project path="device/qcom/sepolicy-legacy-um" name="android_device_qcom_sepolicy-legacy-um" remote="acme" />
+
+  <!-- external repos -->
+  <project path="external/ant-wireless/ant_client" name="android_external_ant-wireless_ant_client" remote="acme" />
+  <project path="external/ant-wireless/ant_native" name="android_external_ant-wireless_ant_native" remote="acme" />
+  <project path="external/ant-wireless/ant_service" name="android_external_ant-wireless_ant_service" remote="acme" />
+  <project path="external/ant-wireless/hidl" name="android_external_ant-wireless_hidl" remote="acme" />
+  <project path="external/e2fsprogs" name="android_external_e2fsprogs" remote="acme" />
+  <project path="external/erofs-utils" name="android_external_erofs-utils" remote="acme" />
+  <project path="external/exfatprogs" name="android_external_exfatprogs" remote="acme" />
+  <project path="external/f2fs-tools" name="android_external_f2fs-tools" remote="acme" />
+  <project path="external/gptfdisk" name="android_external_gptfdisk" remote="acme" />
+  <project path="external/mksh" name="android_external_mksh" remote="acme" />
+  <project path="external/jemalloc_new" name="android_external_jemalloc_new" remote="acme" />
+  <project path="external/json-c" name="android_external_json-c" remote="acme" />
+  <project path="external/selinux" name="android_external_selinux" remote="acme" />
+  <project path="external/tinycompress" name="android_external_tinycompress" remote="acme" />
+
+  <!-- frameworks -->
+  <project path="frameworks/base" name="android_frameworks_base" remote="acme" />
+  <project path="frameworks/native" name="android_frameworks_native" remote="acme" />
+
+  <!-- hardware -->
+  <project path="hardware/qcom-caf/bootctrl" name="android_hardware_qcom_bootctrl" groups="qcom,pdk-qcom" remote="acme" revision="spring-caf" />
+  <project path="hardware/qcom-caf/common" name="android_hardware_qcom-caf_common" remote="acme" >
+    <!-- add guard for AOSP hardware/qcom dir -->
+    <linkfile src="os_pickup_aosp.mk" dest="hardware/qcom/Android.mk" />
+    <!-- add guards for CAF repositories -->
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8250/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8250/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8250-legacy/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8250-legacy/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="hardware/nxp/Android.bp" />
+    <linkfile src="os_pickup.bp" dest="vendor/nxp/opensource/pn5xx/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="vendor/nxp/opensource/pn5xx/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="vendor/nxp/opensource/sn100x/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="vendor/nxp/opensource/sn100x/Android.mk" />
+  </project>
+  <project path="hardware/qcom-caf/sm8250/audio" name="android_hardware_qcom_audio" groups="qcom,qcom_audio" remote="acme" revision="spring-caf-sm8250" />
+  <project path="hardware/qcom-caf/sm8250/display" name="android_hardware_qcom_display" groups="pdk,qcom,qcom_display" remote="acme" revision="spring-caf-sm8250" />
+  <project path="hardware/qcom-caf/sm8250/media" name="android_hardware_qcom_media" groups="qcom" remote="acme" revision="spring-caf-sm8250" />
+  <project path="hardware/qcom-caf/sm8250-legacy/audio" name="android_hardware_qcom_audio" groups="qcom,qcom_audio" remote="acme" revision="spring-caf-sm8250" />
+  <project path="hardware/qcom-caf/sm8250-legacy/display" name="android_hardware_qcom_display" groups="pdk,qcom,qcom_display" remote="acme" revision="spring-caf-sm8250-legacy" />
+  <project path="hardware/qcom-caf/sm8250-legacy/media" name="android_hardware_qcom_media" groups="qcom" remote="acme" revision="spring-caf-sm8250" />
+  <project path="hardware/qcom-caf/thermal" name="android_hardware_qcom_thermal" remote="acme" />
+  <project path="hardware/qcom-caf/wlan" name="android_hardware_qcom_wlan" groups="qcom_wlan" remote="acme" revision="spring-caf"/>
+  <project path="hardware/interfaces" name="android_hardware_interfaces" remote="acme" />
+  <project path="hardware/libhardware" name="android_hardware_libhardware" remote="acme" />
+  <project path="hardware/qcom/camera" name="android_hardware_qcom_camera" groups="qcom_camera" remote="acme" />
+  <project path="hardware/qcom/wlan" name="android_hardware_qcom_wlan" groups="qcom_wlan,pdk-qcom" remote="acme" />
+
+  <!-- packages repos -->
+  <project path="packages/apps/Nfc" name="android_packages_apps_Nfc" remote="acme" />
+  <project path="packages/apps/Settings" name="android_packages_apps_Settings" remote="acme" />
+  <project path="packages/resources/devicesettings" name="android_packages_resources_devicesettings" remote="acme" />
+
+  <!-- prebuilts -->
+  <project path="prebuilts/tools-acme" name="android_prebuilts_tools-acme" remote="acme" />
+
+  <!-- tools repos -->
+  <project path="tools/extract-utils" name="android_tools_extract-utils" remote="acme" />
+
+  <!-- vendor repos -->
+  <project path="vendor/acme" name="android_vendor_acme" remote="acme" />
+  <project path="vendor/codeaurora/telephony" name="android_vendor_codeaurora_telephony" remote="acme" />
+  <project path="vendor/nxp/opensource/interfaces/nfc" name="android_vendor_nxp_interfaces_opensource_nfc" remote="acme" />
+  <project path="vendor/nxp/opensource/commonsys/external/libnfc-nci" name="android_vendor_nxp_opensource_external_libnfc-nci" remote="acme" />
+  <project path="vendor/nxp/opensource/commonsys/frameworks" name="android_vendor_nxp_opensource_frameworks" remote="acme" />
+  <project path="vendor/nxp/opensource/commonsys/packages/apps/Nfc" name="android_vendor_nxp_opensource_packages_apps_Nfc" remote="acme" />
+  <project path="vendor/nxp/opensource/pn5xx/halimpl" name="android_vendor_nxp_opensource_halimpl" remote="acme" revision="spring-pn5xx" />
+  <project path="vendor/nxp/opensource/pn5xx/hidlimpl" name="android_vendor_nxp_opensource_hidlimpl" remote="acme" revision="spring-pn5xx" />
+  <project path="vendor/nxp/opensource/sn100x/halimpl" name="android_vendor_nxp_opensource_halimpl" remote="acme" revision="spring-sn100x" />
+  <project path="vendor/nxp/opensource/sn100x/hidlimpl" name="android_vendor_nxp_opensource_hidlimpl" remote="acme" revision="spring-sn100x" />
+  <project path="vendor/qcom/opensource/audio" name="android_vendor_qcom_opensource_audio" remote="acme" />
+  <project path="vendor/qcom/opensource/audio-hal/st-hal" name="android_vendor_qcom_opensource_audio-hal_st-hal" remote="acme" />
+  <project path="vendor/qcom/opensource/commonsys/bluetooth_ext" name="android_vendor_qcom_opensource_bluetooth_ext" remote="acme" />
+  <project path="vendor/qcom/opensource/commonsys/display" name="android_vendor_qcom_opensource_display-commonsys" remote="acme" />
+  <project path="vendor/qcom/opensource/commonsys/packages/apps/Bluetooth" name="android_vendor_qcom_opensource_packages_apps_Bluetooth" remote="acme" />
+  <project path="vendor/qcom/opensource/commonsys/system/bt" name="android_vendor_qcom_opensource_system_bt" remote="acme" />
+  <project path="vendor/qcom/opensource/commonsys-intf/bluetooth" name="android_vendor_qcom_opensource_bluetooth-commonsys-intf" remote="acme" />
+  <project path="vendor/qcom/opensource/commonsys-intf/display" name="android_vendor_qcom_opensource_display-commonsys-intf" remote="acme" />
+  <project path="vendor/qcom/opensource/data-ipa-cfg-mgr" name="android_vendor_qcom_opensource_data-ipa-cfg-mgr" remote="acme" />
+  <project path="vendor/qcom/opensource/dataservices" name="android_vendor_qcom_opensource_dataservices" remote="acme" />
+  <project path="vendor/qcom/opensource/fm-commonsys" name="android_vendor_qcom_opensource_fm-commonsys" remote="acme" />
+  <project path="vendor/qcom/opensource/healthd-ext" name="android_vendor_qcom_opensource_healthd-ext" remote="acme"/>
+  <project path="vendor/qcom/opensource/interfaces" name="android_vendor_qcom_opensource_interfaces" remote="acme" />
+  <project path="vendor/qcom/opensource/power" name="android_vendor_qcom_opensource_power" remote="acme" />
+  <project path="vendor/qcom/opensource/thermal-engine" name="android_vendor_qcom_opensource_thermal-engine" remote="acme" />
+  <project path="vendor/qcom/opensource/vibrator" name="android_vendor_qcom_opensource_vibrator" remote="acme" />
+  <project path="vendor/qcom/opensource/usb" name="android_vendor_qcom_opensource_usb" remote="acme" />
+  <project path="vendor/qcom/opensource/wfd-commonsys" name="android_vendor_qcom_opensource_wfd-commonsys" remote="acme" />
+
+</manifest>
