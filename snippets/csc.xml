@@ -17,7 +17,7 @@
     <linkfile src="target" dest="build/target" />
     <linkfile src="tools" dest="build/tools" />
   </project>
-  <project path="build/soong" name="android_build_soong" groups="pdk,tradefed" remote="acme" >
+  <project path="build/soong" name="android_build_soong" groups="pdk,tradefed" remote="csc" >
     <linkfile src="root.bp" dest="Android.bp" />
     <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
   </project>
@@ -25,8 +25,8 @@
   <!-- device -->
   <project path="device/csc/sepolicy" name="android_device_csc_sepolicy" remote="csc" />
   <project path="device/qcom/sepolicy" name="android_device_qcom_sepolicy" remote="acme" />
-  <project path="device/qcom/sepolicy_vndr" name="android_device_qcom_sepolicy_vndr" remote="acme" />
-  <project path="device/qcom/sepolicy-legacy-um" name="android_device_qcom_sepolicy-legacy-um" remote="acme" />
+  <project path="device/qcom/sepolicy_vndr" name="android_device_qcom_sepolicy_vndr" remote="csc" />
+  <project path="device/qcom/sepolicy-legacy-um" name="android_device_qcom_sepolicy-legacy-um" remote="csc" />
 
   <!-- external repos -->
   <project path="external/ant-wireless/ant_client" name="android_external_ant-wireless_ant_client" remote="acme" />
@@ -45,8 +45,8 @@
   <project path="external/tinycompress" name="android_external_tinycompress" remote="acme" />
 
   <!-- frameworks -->
-  <project path="frameworks/base" name="android_frameworks_base" remote="acme" />
-  <project path="frameworks/native" name="android_frameworks_native" remote="acme" />
+  <project path="frameworks/base" name="android_frameworks_base" remote="csc" />
+  <project path="frameworks/native" name="android_frameworks_native" remote="csc" />
 
   <!-- hardware -->
   <project path="hardware/qcom-caf/bootctrl" name="android_hardware_qcom_bootctrl" groups="qcom,pdk-qcom" remote="acme" revision="spring-caf" />
@@ -79,7 +79,7 @@
 
   <!-- packages repos -->
   <project path="packages/apps/Nfc" name="android_packages_apps_Nfc" remote="acme" />
-  <project path="packages/apps/Settings" name="android_packages_apps_Settings" remote="acme" />
+  <project path="packages/apps/Settings" name="android_packages_apps_Settings" remote="csc" />
   <project path="packages/resources/devicesettings" name="android_packages_resources_devicesettings" remote="acme" />
 
   <!-- prebuilts -->

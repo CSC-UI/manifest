@@ -1104,7 +1104,7 @@
 
   <repo-hooks in-project="platform/tools/repohooks" enabled-list="pre-upload" />
 
-  <!-- Acme changes -->
+  <!-- Csc changes -->
   <include name="snippets/remove.xml"/>
   <include name="snippets/csc.xml"/>
 
