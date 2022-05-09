@@ -4,6 +4,7 @@
   <!-- Remotes -->
   <remote name="csc" fetch="https://github.com/CSC-UI" revision="12.1" />
   <remote name="acme" fetch="https://github.com/AcmeUI" revision="spring" />
+  <remote name="acme-gitlab" fetch="https://gitlab.com/AcmeUI" revision="spring" />
 
   <project path="bionic" name="android_bionic" groups="pdk" remote="acme" />
 
@@ -85,12 +86,17 @@
   <!-- prebuilts -->
   <project path="prebuilts/tools-csc" name="android_prebuilts_tools-csc" remote="csc" />
 
+  <!-- system repos -->
+  <project path="system/core" name="android_system_core" remote="acme" />
+  <project path="system/sepolicy" name="android_system_sepolicy" remote="acme" />
+
   <!-- tools repos -->
   <project path="tools/extract-utils" name="android_tools_extract-utils" remote="acme" />
 
   <!-- vendor repos -->
   <project path="vendor/csc" name="android_vendor_csc" remote="csc" />
   <project path="vendor/codeaurora/telephony" name="android_vendor_codeaurora_telephony" remote="acme" />
+  <project path="vendor/gms" name="android_vendor_gms" remote="acme-gitlab" clone-depth="1" />
   <project path="vendor/nxp/opensource/interfaces/nfc" name="android_vendor_nxp_interfaces_opensource_nfc" remote="acme" />
   <project path="vendor/nxp/opensource/commonsys/external/libnfc-nci" name="android_vendor_nxp_opensource_external_libnfc-nci" remote="acme" />
   <project path="vendor/nxp/opensource/commonsys/frameworks" name="android_vendor_nxp_opensource_frameworks" remote="acme" />
