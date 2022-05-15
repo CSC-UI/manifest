@@ -1,4 +1,5 @@
 # CSC UI
+## 注意：自己弄着玩的，不是那种类原生！
 
 ## Getting Started
 

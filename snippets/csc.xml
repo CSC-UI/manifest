@@ -5,6 +5,9 @@
   <remote name="csc" fetch="https://github.com/CSC-UI" revision="12.1" />
   <remote name="acme" fetch="https://github.com/AcmeUI" revision="spring" />
   <remote name="acme-gitlab" fetch="https://gitlab.com/AcmeUI" revision="spring" />
+  <remote name="AcmeUI-Devices" fetch="https://github.com/AcmeUI-Devices" revision="spring" />
+  <remote name="chashaochang" fetch="https://github.com/chashaochang" revision="12.1" />
+  <remote name="chashaochang-gitlab" fetch="https://gitlab.com/chashaochang" revision="12.1" />
 
   <project path="bionic" name="android_bionic" groups="pdk" remote="acme" />
 
@@ -28,6 +31,7 @@
   <project path="device/qcom/sepolicy" name="android_device_qcom_sepolicy" remote="acme" />
   <project path="device/qcom/sepolicy_vndr" name="android_device_qcom_sepolicy_vndr" remote="csc" />
   <project path="device/qcom/sepolicy-legacy-um" name="android_device_qcom_sepolicy-legacy-um" remote="csc" />
+  <project path="device/xiaomi/cas" name="device_xiaomi_cas" remote="chashaochang" />
 
   <!-- external repos -->
   <project path="external/ant-wireless/ant_client" name="android_external_ant-wireless_ant_client" remote="acme" />
@@ -77,11 +81,16 @@
   <project path="hardware/libhardware" name="android_hardware_libhardware" remote="acme" />
   <project path="hardware/qcom/camera" name="android_hardware_qcom_camera" groups="qcom_camera" remote="acme" />
   <project path="hardware/qcom/wlan" name="android_hardware_qcom_wlan" groups="qcom_wlan,pdk-qcom" remote="acme" />
+  <project path="hardware/xiaomi" name="android_hardware_xiaomi" remote="AcmeUI-Devices" />
+
+  <!-- kernel repos -->
+  <project path="kernel/xiaomi/cas" name="android_kernel_xiaomi_cas" remote="chashaochang"/>
 
   <!-- packages repos -->
   <project path="packages/apps/Nfc" name="android_packages_apps_Nfc" remote="acme" />
   <project path="packages/apps/Settings" name="android_packages_apps_Settings" remote="csc" />
   <project path="packages/resources/devicesettings" name="android_packages_resources_devicesettings" remote="acme" />
+  <project path="packages/apps/GcamGOPrebuilt" name="android_packages_apps_GCamGOPrebuilt" remote="AcmeUI-Devices" />
 
   <!-- prebuilts -->
   <project path="prebuilts/tools-csc" name="android_prebuilts_tools-csc" remote="csc" />
@@ -123,5 +132,6 @@
   <project path="vendor/qcom/opensource/vibrator" name="android_vendor_qcom_opensource_vibrator" remote="acme" />
   <project path="vendor/qcom/opensource/usb" name="android_vendor_qcom_opensource_usb" remote="acme" />
   <project path="vendor/qcom/opensource/wfd-commonsys" name="android_vendor_qcom_opensource_wfd-commonsys" remote="acme" />
+  <project path="vendor/xiaomi/cas" name="vendor_xiaomi_cas" remote="chashaochang-gitlab" />
 
 </manifest>
